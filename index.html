@@ -200,7 +200,7 @@
   </div>
 
   <script>
-    const blynkToken = 'Y72JM6i9Q5a31QQ1AKe9ts-_l4qVO8Aa';
+    const blynkToken='Y72JM6i9Q5a31QQ1AKe9ts-_l4qVO8Aa';
 
     const tempBar = new ProgressBar.SemiCircle('#temp-bar', {
       strokeWidth: 12,
@@ -238,21 +238,21 @@
     }
 
     function fetchData() {
-      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&v0`)
+      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&V0`)
         .then(response => response.text())
         .then(data => {
           document.getElementById('temp-val').textContent = data;
           tempBar.animate(data / 100);
         });
 
-      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&v1`)
+      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&V1`)
         .then(response => response.text())
         .then(data => {
           document.getElementById('hum-val').textContent = data;
           humBar.animate(data / 100);
         });
 
-      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&v3`)
+      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&V2`)
         .then(response => response.text())
         .then(data => {
           document.getElementById('soil-val').textContent = data;
@@ -264,7 +264,7 @@
     }
 
     function checkPumpState() {
-      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&v12`)
+      fetch(`https://blynk.cloud/external/api/get?token=${blynkToken}&V3`)
         .then(response => response.text())
         .then(state => {
           const isPumpOn = state === '1';
@@ -274,7 +274,7 @@
     }
 
     function setPump(state) {
-      fetch(`https://blynk.cloud/external/api/update?token=${blynkToken}&v12=${state ? 1 : 0}`)
+      fetch(`https://blynk.cloud/external/api/update?token=${blynkToken}&V3=${state ? 1 : 0}`)
         .then(() => checkPumpState());
     }
 
@@ -282,4 +282,5 @@
   </script>
 </body>
 </html>
+
 
